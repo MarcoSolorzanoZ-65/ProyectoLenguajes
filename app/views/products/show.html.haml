@@ -1,0 +1,28 @@
+%p#notice= notice
+
+%p
+  %b= t('activerecord.attributes.product.id')
+  = @product.id
+%p
+  %b= t('activerecord.attributes.product.name')
+  = @product.name
+%p
+  %b= t('activerecord.attributes.product.desc')
+  = @product.desc
+%p
+  %b= t('activerecord.attributes.product.price')
+  = @product.price
+%p
+  %b= t('activerecord.attributes.product.status')
+  = @product.status ? t('application.status.active') : t('application.status.inactive')
+%p
+  %b= t('activerecord.attributes.product.menu_id')
+  = @product.menu_id
+%p
+  = image_tag @product.image
+
+= link_to t('application.edit'), edit_product_path(@product)
+\|
+= link_to t('application.back'), products_path
+
+

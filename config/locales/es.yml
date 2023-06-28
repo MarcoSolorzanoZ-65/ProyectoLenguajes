@@ -1,0 +1,48 @@
+es:
+  application:
+    list_of: Lista de %{model}
+    new_model: Nuevo %{model}
+    btnTitle: Ver dueños
+    show: Mostrar
+    edit: Editar
+    save: Guardar
+    back: Atras
+    delete: Eliminar
+    create: Crear 
+    edited: Actualizado correctamente
+    destroyed: Borrado correctamente
+    select: Seleccione
+    error: Error
+    created: Creado correctamente
+    cruds_available: Temas disponibles
+    can_not_be_saved: No se pudo guardar
+  activerecord:
+    attributes:
+      product:
+        name: Nombre
+        desc: Descripción
+        price: Precio
+        status: Estado
+  modules:
+    product:
+      new: Nuevo Producto
+      edit: Editando producto
+      one: Producto
+      other: Productos
+  errors:
+    models:
+      product:
+        attributes:
+          name:
+            blank: está vacío
+            too_long: debe tener como máximo %{count} caracteres
+          desc: 
+            blank: está vacío
+            too_long: cuenta con un máximo de %{count} caracteres
+          price:
+            blank: está vacío
+          status:
+            blank: está vacío
+          menu:
+            required: "Debe seleccionar un menú"
+
