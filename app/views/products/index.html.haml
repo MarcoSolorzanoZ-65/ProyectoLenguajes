@@ -5,6 +5,7 @@
     %h1.mb-4= t('application.list_of', model: t('modules.product.other'))
     .float-end.pb-4
       = link_to t('application.create'), new_product_path, class: "btn btn-primary" 
+      = button_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' }, form: {action: destroy_user_session_path, method: :delete}
 
 %table.table.table-striped
   %thead
@@ -28,6 +29,15 @@
         %td= link_to t('application.show'), product, class: "btn btn-info"
         %td= link_to t('application.edit'), edit_product_path(product), class: "btn btn-success"
         %td= button_to t('application.delete'), product, method: :delete, class: "btn btn-danger"
+
+-# Add the following line if you want to display a notice after logging out
+%p= notice
+
+-# Add the following line if you want to display an error after logging out
+%p= alert
+
+
+
 
 
 

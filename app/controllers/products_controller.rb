@@ -4,6 +4,9 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
+   if session[:user_id] 
+      @user = User.find_by(id:session[:user_id])
+    end
   end
 
   def show
@@ -58,7 +61,7 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :desc, :image, :price, :status, :menu_id)
+    params.require(:product).permit(:name, :desc, :image, :price, :status, :total_sales, :menu_id)
   end
 end
 

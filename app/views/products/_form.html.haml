@@ -31,8 +31,13 @@
       = f.label :menu_id, t('activerecord.attributes.product.menu_id')
       = f.text_field :menu_id, class: "form-input"
 
+    .field
+      = f.label :total_sales, t('activerecord.attributes.product.total_sales')
+      = f.number_field :total_sales, class: "form-input"
+
     .actions
       = f.submit t('application.save'), class: "form-button"
+
 
 
 

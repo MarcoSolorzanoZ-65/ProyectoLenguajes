@@ -19,6 +19,9 @@
   %b= t('activerecord.attributes.product.menu_id')
   = @product.menu_id
 %p
+  %b= t('activerecord.attributes.product.total_sales')
+  = @product.total_sales
+%p
   = image_tag @product.image
 
 = link_to t('application.edit'), edit_product_path(@product)

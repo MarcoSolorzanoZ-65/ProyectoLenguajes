@@ -3,11 +3,13 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   subject {
     described_class.new(
-      email: "test@example.com",
+      email: "user@example.com",
       password: "password",
-      password_confirmation: "password"
+      category: category
     )
   }
+
+  let(:category) { Category.create(category_name: "Category 1") }
 
   it "is valid with valid attributes" do
     expect(subject).to be_valid
@@ -23,9 +25,9 @@ RSpec.describe User, type: :model do
     expect(subject).to_not be_valid
   end
 
-  it "is not valid if password and password_confirmation don't match" do
-    subject.password_confirmation = "different_password"
-    expect(subject).to_not be_valid
+  it "belongs to a category" do
+    expect(subject.category).to eq(category)
   end
 end
+
 

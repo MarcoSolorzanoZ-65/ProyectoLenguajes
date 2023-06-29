@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
-  resources :categories
-  devise_for :users
   root "products#index"
-
   resources :products
-  
+
+  devise_for :users, controllers: {
+  registrations: 'users/registrations',
+  sessions: 'users/sessions',
+  passwords: 'users/passwords'
+  # Agrega aquí otros controladores de Devise según tus necesidades
+}
   scope module: :api do
     resources :menus
+    resources :categories
   end
   
 end
