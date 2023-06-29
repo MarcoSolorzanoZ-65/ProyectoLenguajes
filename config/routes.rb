@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  root "products#index"
+  root "dashboards#index"
   resources :products
+  
+  
 
   devise_for :users, controllers: {
   registrations: 'users/registrations',

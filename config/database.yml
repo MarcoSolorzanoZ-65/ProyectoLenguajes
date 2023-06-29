@@ -82,5 +82,5 @@ test:
 production:
   <<: *default
   database: proyecto_lenguajes_production
-  username: proyecto_lenguajes
+  username: proyecto_lenguajes_2023
   password: <%= ENV["BASE_PROJECT_2023_DATABASE_PASSWORD"] %>

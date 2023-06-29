@@ -1,9 +1,9 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
     @products = Product.all
+    @users = User.all
    if session[:user_id] 
       @user = User.find_by(id:session[:user_id])
     end
