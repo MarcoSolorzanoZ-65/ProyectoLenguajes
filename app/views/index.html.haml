@@ -1,0 +1,14 @@
+%h1 Lista de Usuarios
+
+%table
+  %thead
+    %tr
+      %th Email
+      %th Categoría
+      <!-- Agrega aquí las columnas adicionales que deseas mostrar -->
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.email
+        %td= user.category
+        <!-- Agrega aquí las columnas adicionales que deseas mostrar -->
