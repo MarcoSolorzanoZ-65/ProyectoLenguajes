@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.2.0"
+ruby "3.2.2"
 
 gem "rails", "~> 7.0.4", ">= 7.0.4.2"
 
@@ -28,6 +28,7 @@ group :development, :test do
   gem "html2haml"
   gem "haml-rails"
   gem 'rspec-rails'
+  gem 'rubocop', require: false
 end
 
 group :development do
