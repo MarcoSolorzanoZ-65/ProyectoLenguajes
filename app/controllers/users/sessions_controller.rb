@@ -13,7 +13,7 @@ class Users::SessionsController < Devise::SessionsController
   # DELETE /resource/sign_out
   def destroy
     super do
-      redirect_to new_user_session_path, notice: "Logged out"
+      redirect_to new_user_session_path, notice: t('devise.sessions.user.signed_out')
       return
     end
   end

@@ -97,11 +97,13 @@ es:
     sessions:
       user:
         signed_in: Sesion iniciada
+        signed_out: Sesion cerrada
     failure:
       user:
         unauthenticated: Sin autenticar
         not_found_in_database: Usuario no registrado
         invalid: Usuario invalido
+        already_authenticated: Sesion ya iniciada
 
   errors:
     models:
