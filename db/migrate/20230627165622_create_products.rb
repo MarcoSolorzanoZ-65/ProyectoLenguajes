@@ -6,6 +6,7 @@ class CreateProducts < ActiveRecord::Migration[7.0]
       t.integer :price
       
       t.belongs_to :menu
+      t.belongs_to :order
 
       t.timestamps
     end

@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   scope module: :api do
     resources :menus
     resources :categories
+    resources :orders
   end
 end
 
