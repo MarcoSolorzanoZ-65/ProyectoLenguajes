@@ -5,7 +5,8 @@ RSpec.describe User, type: :model do
     described_class.new(
       email: "user@example.com",
       password: "password",
-      category: category
+      category: category,
+      address: "123 Main St" # Agrega la dirección aquí
     )
   }
 
@@ -29,5 +30,6 @@ RSpec.describe User, type: :model do
     expect(subject.category).to eq(category)
   end
 end
+
 
 

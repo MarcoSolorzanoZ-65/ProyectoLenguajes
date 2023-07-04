@@ -1,31 +1,32 @@
 %p#notice= notice
 
-%p
-  %b= t('activerecord.attributes.product.id')
-  = @product.id
-%p
-  %b= t('activerecord.attributes.product.name')
-  = @product.name
-%p
-  %b= t('activerecord.attributes.product.desc')
-  = @product.desc
-%p
-  %b= t('activerecord.attributes.product.price')
-  = @product.price
-%p
-  %b= t('activerecord.attributes.product.status')
-  = @product.status ? t('application.status.active') : t('application.status.inactive')
-%p
-  %b= t('activerecord.attributes.product.menu_id')
-  = @product.menu_id
-%p
-  %b= t('activerecord.attributes.product.total_sales')
-  = @product.total_sales
-%p
-  = image_tag @product.image
+.div.m-4
+  .card 
+    .card-body
+      %h5.card-title
+        = t('activerecord.attributes.product.id')
+      %p.card-text= @product.id
+      %h5.card-title
+        = t('activerecord.attributes.product.name')
+      %p.card-text= @product.name
+      %h5.card-title
+        = t('activerecord.attributes.product.desc')
+      %p.card-text= @product.desc
+      %h5.card-title
+        = t('activerecord.attributes.product.price')
+      %p.card-text= @product.price
+      %h5.card-title
+        = t('activerecord.attributes.product.status')
+      %p.card-text= @product.id
+      %h5.card-title
+        = t('activerecord.attributes.product.total_sales')
+      %p.card-text= @product.total_sales
+      %h5.card-title
+        = t('activerecord.attributes.product.image')
+      %p
+        = image_tag @product.image
 
-= link_to t('application.edit'), edit_product_path(@product)
-\|
-= link_to t('application.back'), products_path
-
+  .row.mt-4
+    .offset-3.col-3
+      = link_to t('application.back'), products_path, class: "btn btn-secondary btn-block"
 

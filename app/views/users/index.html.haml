@@ -1,0 +1,37 @@
+%p{:style => "color: green"}= notice
+
+.div.m-4
+  .page.header
+    %h1.mb-4= t('application.list_of', model: t('modules.user.other'))
+    .float-end.pb-4
+      = link_to t('application.create'), new_user_path, class: "btn btn-primary" 
+      = button_to t('application.log_out'), destroy_user_session_path, method: :delete, class: "btn btn-danger", data: { confirm: t('application.confirmation.log_out') }, form: {action: destroy_user_session_path, method: :delete}
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th= t('activerecord.attributes.user.email')
+      %th= t('activerecord.attributes.user.category')
+      %th= t('activerecord.attributes.user.address')
+      %th
+      %th
+      %th
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.email
+        %td= user.category.category_name
+        %td= user.address
+        %td= link_to t('application.show'), user_path(user), class: "btn btn-info"
+        %td= link_to t('application.edit'), edit_user_path(user), class: "btn btn-success"
+        %td= button_to t('application.delete'), user_path(user), method: :delete, class: "btn btn-danger", data: { confirm: t('application.confirmation.delete') }
+
+-# Add the following line if you want to display a notice after logging out
+%p= notice
+
+-# Add the following line if you want to display an error after logging out
+%p= alert
+
+
+
+

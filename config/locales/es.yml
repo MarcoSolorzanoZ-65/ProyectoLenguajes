@@ -2,6 +2,7 @@ es:
   application:
     list_of: Lista de %{model}
     new_model: Nuevo %{model}
+    new_product: Nuevo Producto
     btnTitle: Ver dueños
     show: Mostrar
     edit: Editar
@@ -9,6 +10,7 @@ es:
     back: Atras
     delete: Eliminar
     create: Crear 
+    log_out: Cerrar sesion
     edited: Actualizado correctamente
     destroyed: Borrado correctamente
     select: Seleccione
@@ -16,19 +18,91 @@ es:
     created: Creado correctamente
     cruds_available: Temas disponibles
     can_not_be_saved: No se pudo guardar
+    
   activerecord:
     attributes:
+      user:
+        log_in: Iniciar Sesion
+        sign_up: Registrarse
+        user_detail: Detalles del Usuario
+        minimum_character: Caracteres minimos
+        email: Correo
+        password: Contraseña
+        password_confirmation: Confirmar contraseña
+        category_name: Nombre categoria
+        category_id: Categoria
+        category: Categoria
+        address: Direccion
+        remember_me: Recordarme
       product:
         name: Nombre
         desc: Descripción
         price: Precio
         status: Estado
+        menu_id: Menu
+        image: Imagen
+        total_sales: Total de ventas        
+    modules: 
+      user:
+        edit: Editando usuario
+      product:
+        edit: Editando producto
+    errors:
+      models:
+        user:
+          attributes: 
+            password_confirmation:
+              confirmation: confirmacion requerida
+            email:
+              blank: está vacío
+            password:
+              blank: está vacía
+            address:
+              blank: está vacía
+            category:
+              required: es requerida
+        product:
+          attributes:
+            name:
+              blank: está vacío
+            desc:
+              blank: está vacío
+            price:
+              blank: está vacío
+            menu:
+              required: es requerido
+
   modules:
+    user:
+      new: Nuevo usuario
+      edit: Editando usuario
+      one: Usuario
+      other: Usuarios
     product:
       new: Nuevo Producto
       edit: Editando producto
       one: Producto
       other: Productos
+  
+  devise:
+    sign_up: Registrarse
+    log_in: Iniciar Sesion
+    log_out: Cerrar Sesion
+    forgot_password: Ha olvidad su contrseña?
+    register: Registrarse
+    select_categoty: Seleccione una categoria
+    registrations:
+      user:
+        signed_up: Sesion creada
+    sessions:
+      user:
+        signed_in: Sesion iniciada
+    failure:
+      user:
+        unauthenticated: Sin autenticar
+        not_found_in_database: Usuario no registrado
+        invalid: Usuario invalido
+
   errors:
     models:
       product:
@@ -44,5 +118,7 @@ es:
           status:
             blank: está vacío
           menu:
-            required: "Debe seleccionar un menú"
+            required: Debe seleccionar un menú
+    messages:
+      not_saved: No se ha guardado
 

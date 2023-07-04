@@ -1,0 +1,19 @@
+%h1= t('activerecord.modules.user.edit')
+
+= form_for @user, url: user_path(@user) do |f|
+  = f.label :email
+  = f.text_field :email, class: 'form-control'
+
+  = f.label :password
+  = f.password_field :password, class: 'form-control'
+
+  = f.label :password_confirmation
+  = f.password_field :password_confirmation, class: 'form-control'
+
+  = f.label :category_id
+  = f.collection_select :category_id, Category.all, :id, :category_name, { prompt: 'Seleccione una categoría' }, class: 'form-control'
+
+  = link_to t('application.back'), users_path, class: 'btn btn-primary'
+  = f.submit t('application.save'), class: 'btn btn-primary'
+
+

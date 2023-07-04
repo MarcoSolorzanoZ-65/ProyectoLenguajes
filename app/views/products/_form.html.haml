@@ -7,36 +7,39 @@
           - @product.errors.full_messages.each do |message|
             %li= message
 
-    .field
+    .form-group.mx-4
       = f.label :name, t('activerecord.attributes.product.name')
       = f.text_field :name, class: "form-input"
 
-    .field
+    .form-group.mx-4
       = f.label :desc, t('activerecord.attributes.product.desc')
       = f.text_field :desc, class: "form-input"
 
-    .field
+    .form-group.mx-4
       = f.label :image, t('activerecord.attributes.product.image')
       = f.file_field :image
 
-    .field
+    .form-group.mx-4
       = f.label :price, t('activerecord.attributes.product.price')
       = f.number_field :price, class: "form-input"
 
-    .field
+    .form-group.mx-4
       = f.label :status, t('activerecord.attributes.product.status')
-      = f.select :status, [['', ''], ['Active', true], ['Inactive', false]], { include_blank: true }, class: "form-select"
+      = f.select :status, [['Active', true], ['Inactive', false]], { include_blank: true }, class: "form-select"
 
-    .field
+    .form-group.mx-4
       = f.label :menu_id, t('activerecord.attributes.product.menu_id')
       = f.text_field :menu_id, class: "form-input"
 
-    .field
+    .form-group.mx-4
       = f.label :total_sales, t('activerecord.attributes.product.total_sales')
       = f.number_field :total_sales, class: "form-input"
 
-    .actions
-      = f.submit t('application.save'), class: "form-button"
+    .row.mt-4
+    .col-3
+      = link_to t('application.back'), products_path, class: "btn btn-secondary btn-block"
+    .col-3
+      = button_tag t('application.save'), class: "btn btn-outline-success btn-block"
 
 
 
