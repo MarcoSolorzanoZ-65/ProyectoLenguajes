@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "sb-admin-2" %>
+  </head>
+  <body id="page-top">
+    <div id="wrapper">
+      <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <%= link_to root_path, class: "sidebar-brand d-flex align-items-center justify-content-center"  do %>
+          <div class="sidebar-brand-text mx-3"> HOME </div>
+        <%end%>
+        <hr class="sidebar-divider my-0">
+        <hr class="sidebar-divider">
+        <div class="sidebar-heading">
+          Opciones
+        </div>
+
+        <li class="nav-item">
+          <% if current_user.present? %>
+            <%= link_to products_path, class: "nav-link"  do %>
+              <i class="fas fa-fw fa-shopping-basket"></i>
+              <span>Productos</span>
+            <%end%>
+          <%end%>
+        </li>
+
+        <li class="nav-item">
+          <% if current_user.present? %>
+            <%= link_to users_path, class: "nav-link"  do %>
+              <i class="fas fa-fw fa-user"></i>
+              <span>Usuarios</span>
+            <%end%>
+          <%end%> 
+        </li>
+
+      </ul>
+<!-- -->
+      <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+          <!-- Topbar -->
+          <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+            <!-- Sidebar Toggle -->
+            <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+              <i class="fa fa-bars"></i>
+            </button>
+
+            <!-- Topbar Navbar -->
+            <ul class="navbar-nav ml-auto">
+                <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                  <form class="form-inline mr-auto w-100 navbar-search">
+                    <div class="input-group">
+                      <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                      <div class="input-group-append">
+                        <button class="btn btn-primary" type="button">
+                          <i class="fas fa-search fa-sm"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </li>
+              <div class="topbar-divider d-none d-sm-block"></div>
+              <!-- Nav Item - User Information and Log Out button-->
+              <li class="nav-item dropdown no-arrow">
+                <% if current_user.present? %>
+                  <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="mr-2 d-none d-lg-inline text-gray-800 small"><%= t("activerecord.attributes.user.category_type.#{current_user.category_id}")  %></span>
+                    <span class="mr-2 d-none d-lg-inline text-gray-800 small"><%= current_user.email %></span>
+                    <form action="<%= destroy_user_session_path %>" method="post" class="button_to">
+                      <input type="hidden" name="_method" value="delete">
+                        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                          <button type="submit" class="btn btn-danger" data-confirm="Are you sure?">
+                            <%= t('devise.log_out') %>
+                          </button>
+                        </form>
+                  </a>
+                <%end%>
+              </li>
+
+            </ul>
+          </nav>
+          <!-- End of Topbar -->
+          <div class="container-fluid">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+

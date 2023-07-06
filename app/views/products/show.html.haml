@@ -15,10 +15,7 @@
       %p.card-text= @product.price
       %h5.card-title
         = t('activerecord.attributes.product.status')
-      %p.card-text= @product.id
-      %h5.card-title
-        = t('activerecord.attributes.product.total_sales')
-      %p.card-text= @product.total_sales
+      %p.card-text= t("activerecord.attributes.product.status_type.#{@product.status}")
       %h5.card-title
         = t('activerecord.attributes.product.image')
       %p

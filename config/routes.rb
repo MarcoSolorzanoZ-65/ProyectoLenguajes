@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "dashboards#index"
+  root "products#index"
   resources :products
 
   devise_for :users, path: '', path_names: {

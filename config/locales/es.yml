@@ -1,5 +1,6 @@
 es:
   application:
+    title: Proyecto lengujes
     list_of: Lista de %{model}
     new_model: Nuevo %{model}
     new_product: Nuevo Producto
@@ -18,10 +19,13 @@ es:
     created: Creado correctamente
     cruds_available: Temas disponibles
     can_not_be_saved: No se pudo guardar
+    search_users: Correo usuario
+    search: Buscar
     
   activerecord:
     attributes:
       user:
+        user_detail: Detalles del usuario
         log_in: Iniciar Sesion
         sign_up: Registrarse
         user_detail: Detalles del Usuario
@@ -29,9 +33,12 @@ es:
         email: Correo
         password: Contraseña
         password_confirmation: Confirmar contraseña
-        category_name: Nombre categoria
+        category_name: Categoria
         category_id: Categoria
         category: Categoria
+        category_type:
+          1: Administrador
+          2: Usuario
         address: Direccion
         remember_me: Recordarme
       product:
@@ -39,39 +46,44 @@ es:
         desc: Descripción
         price: Precio
         status: Estado
+        status_type:
+          active: Activo
+          inactive: Inactivo
+          true: Activo
+          false: Inactivo
         menu_id: Menu
         image: Imagen
-        total_sales: Total de ventas        
-    modules: 
-      user:
-        edit: Editando usuario
-      product:
-        edit: Editando producto
+        total_sales: Total de ventas     
     errors:
       models:
         user:
           attributes: 
-            password_confirmation:
-              confirmation: confirmacion requerida
-            email:
-              blank: está vacío
-            password:
-              blank: está vacía
-            address:
-              blank: está vacía
-            category:
-              required: es requerida
+              password_confirmation:
+                confirmation: confirmacion requerida
+              email:
+                blank: está vacío
+              password:
+                too_short: es muy corta
+                blank: está vacía
+              address:
+                blank: está vacía
+              category:
+                required: es requerida
         product:
           attributes:
             name:
               blank: está vacío
-            desc:
+              too_long: debe tener como máximo %{count} caracteres
+            desc: 
               blank: está vacío
+              too_long: cuenta con un máximo de %{count} caracteres
             price:
               blank: está vacío
+            status:
+              blank: está vacío
             menu:
-              required: es requerido
-
+              required: requerido       
+        
   modules:
     user:
       new: Nuevo usuario
@@ -89,6 +101,10 @@ es:
     log_in: Iniciar Sesion
     log_out: Cerrar Sesion
     forgot_password: Ha olvidad su contrseña?
+    new_password: Nueva contrseña
+    caonfirm_password: Confirmar contrseña
+    change_password: Cambiar contrseña 
+    reset_password: Eviar para cambiar la contraseña
     register: Registrarse
     select_categoty: Seleccione una categoria
     registrations:
@@ -104,23 +120,7 @@ es:
         not_found_in_database: Usuario no registrado
         invalid: Usuario invalido
         already_authenticated: Sesion ya iniciada
-
+  
   errors:
-    models:
-      product:
-        attributes:
-          name:
-            blank: está vacío
-            too_long: debe tener como máximo %{count} caracteres
-          desc: 
-            blank: está vacío
-            too_long: cuenta con un máximo de %{count} caracteres
-          price:
-            blank: está vacío
-          status:
-            blank: está vacío
-          menu:
-            required: Debe seleccionar un menú
     messages:
-      not_saved: No se ha guardado
-
+        not_saved: No se ha guardado  

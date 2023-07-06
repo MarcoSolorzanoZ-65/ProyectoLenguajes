@@ -25,7 +25,7 @@
 
     .form-group.mx-4
       = f.label :status, t('activerecord.attributes.product.status')
-      = f.select :status, [['Active', true], ['Inactive', false]], { include_blank: true }, class: "form-select"
+      = f.select :status, [[t('activerecord.attributes.product.status_type.active'), true], [t('activerecord.attributes.product.status_type.inactive'), false]], class: "form-select"
 
     .form-group.mx-4
       = f.label :menu_id, t('activerecord.attributes.product.menu_id')

@@ -1,12 +1,12 @@
-%p{:style => "color: green"}= notice
-
 .div.m-4
   .page.header
     %h1.mb-4= t('application.list_of', model: t('modules.user.other'))
-    .float-end.pb-4
-      = link_to t('application.create'), new_user_path, class: "btn btn-primary" 
-      = button_to t('application.log_out'), destroy_user_session_path, method: :delete, class: "btn btn-danger", data: { confirm: t('application.confirmation.log_out') }, form: {action: destroy_user_session_path, method: :delete}
 
+%form.form-inline.mb-4
+  .form-group
+    = text_field_tag :search, params[:search], class: "form-control", placeholder: t('application.search_users')
+  = submit_tag t('application.search'), class: "btn btn-primary"
+  
 %table.table.table-striped
   %thead
     %tr
@@ -25,12 +25,12 @@
         %td= link_to t('application.show'), user_path(user), class: "btn btn-info"
         %td= link_to t('application.edit'), edit_user_path(user), class: "btn btn-success"
         %td= button_to t('application.delete'), user_path(user), method: :delete, class: "btn btn-danger", data: { confirm: t('application.confirmation.delete') }
+    %table.table.table-striped
+  %thead
 
--# Add the following line if you want to display a notice after logging out
-%p= notice
+- if @user
+  - redirect_to user_path(@user)
 
--# Add the following line if you want to display an error after logging out
-%p= alert
 
 
 

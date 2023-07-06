@@ -9,7 +9,7 @@ class Users::SessionsController < Devise::SessionsController
   # def create
   #   super
   # end
-
+  
   # DELETE /resource/sign_out
   def destroy
     super do
@@ -26,13 +26,13 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   private
-
-
+  
+  
   def respond_to_on_destroy
     if current_user
       render json: {
         status: 200,
-        message: 'Logged out successfully'
+        message: "Logged out successfully."
       }, status: :ok
     else
       render json: {
@@ -41,7 +41,4 @@ class Users::SessionsController < Devise::SessionsController
       }, status: :unauthorized
     end
   end
-end
-
-
-
+end  
