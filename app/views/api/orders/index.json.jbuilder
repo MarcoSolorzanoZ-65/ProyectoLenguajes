@@ -9,4 +9,3 @@ json.array! @orders do |order|
     json.status product.status
   end
 end
-

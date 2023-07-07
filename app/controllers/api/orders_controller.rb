@@ -4,12 +4,12 @@ module Api
     before_action :set_order, only: [:show, :edit, :update, :destroy]
 
     def index
-      @orders = Order.all
-      render json: @orders, include: :products
+      @orders = Order.includes(:products)
+      render json: @orders, each_serializer: OrderSerializer, include: 'products'
     end
 
     def show
-      render json: @order, include: :products
+      render json: @order, serializer: OrderSerializer
     end
 
     def new
@@ -49,7 +49,7 @@ module Api
     end
 
     def order_params
-      params.require(:order).permit(:order_status, products_attributes: [:name, :desc, :price, :status])
+      params.require(:order).permit(:order_status, order_products_attributes: [:product_id, :quantity])
     end
   end
 end

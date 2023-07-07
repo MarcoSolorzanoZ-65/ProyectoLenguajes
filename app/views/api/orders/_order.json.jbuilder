@@ -7,4 +7,3 @@ json.products @order.products do |product|
   json.price product.price
   json.status product.status
 end
-

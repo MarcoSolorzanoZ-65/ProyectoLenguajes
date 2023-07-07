@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
 
-  resources :users # Ruta para acceder a los usuarios
+  resources :users
 
   scope module: :api do
     resources :menus
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     resources :orders
   end
 
-  post '/login', to: 'sessions#create' # Agrega esta línea para la ruta de inicio de sesión
+  post '/login', to: 'sessions#create'
 end
 
 
