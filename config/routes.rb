@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   root "dashboards#index"
   resources :products
-  resources :users
 
   devise_for :users, path: '', path_names: {
     sign_in: 'login',
@@ -12,14 +11,17 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     sessions: 'users/sessions'
   }
-  
 
-  resources :users  # Agrega esta línea para definir la ruta de los usuarios
+  resources :users # Ruta para acceder a los usuarios
 
   scope module: :api do
     resources :menus
     resources :categories
     resources :orders
   end
+
+  post '/login', to: 'sessions#create' # Agrega esta línea para la ruta de inicio de sesión
 end
+
+
 

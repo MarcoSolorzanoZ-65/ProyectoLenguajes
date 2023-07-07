@@ -20,6 +20,8 @@ gem 'sass-rails'
 gem "sprockets-rails"
 gem "stimulus-rails"
 gem "turbo-rails"
+gem 'jwt'
+gem 'devise-jwt'
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem 'devise'
 gem 'active_model_serializers', '~> 0.10.2'

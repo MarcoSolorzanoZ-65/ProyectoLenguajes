@@ -27,8 +27,7 @@ class UsersController < ApplicationController
     redirect_to users_path, notice: 'User was successfully deleted.'
   end
 
-  def index
-    @users = User.all
+  def search
     if params[:search].present?
       @user = User.find_by(email: params[:search])
       if @user
@@ -37,14 +36,12 @@ class UsersController < ApplicationController
         flash.now[:notice] = t('errors.messages.user_not_found')
       end
     end
+    @users = User.all
   end
-  
-  
 
   private
 
-  
-  def sign_up_params
+  def user_params
     params.require(:user).permit(:email, :password, :password_confirmation, :address, :category_id)
   end
 end
