@@ -38,9 +38,11 @@ module Api
     end
 
     def destroy
+      @order.products.destroy_all
       @order.destroy
       head :ok
     end
+
 
     private
 

@@ -13,7 +13,7 @@ class Users::SessionsController < Devise::SessionsController
   
   # DELETE /resource/sign_out
   def create
-    category = Category.find(1) # Cambia el 1 por el ID de la categoría que desees
+    category = Category.find(3) # Cambia el 1 por el ID de la categoría que desees
     user = category.users.find_by(email: params[:email])
 
     if user&.valid_password?(params[:password])
