@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  root "products#index"
+  root "dashboards#index"
   resources :products
+  resources :users
 
   devise_for :users, path: '', path_names: {
     sign_in: 'login',

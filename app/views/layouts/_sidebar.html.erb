@@ -5,23 +5,24 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag "sb-admin-2" %>
   </head>
+  <!-- SideBar-->
   <body id="page-top">
     <div id="wrapper">
       <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
         <%= link_to root_path, class: "sidebar-brand d-flex align-items-center justify-content-center"  do %>
-          <div class="sidebar-brand-text mx-3"> HOME </div>
+          <div class="sidebar-brand-text mx-3"> <%= t('application.restaurant') %> </div>
         <%end%>
         <hr class="sidebar-divider my-0">
         <hr class="sidebar-divider">
         <div class="sidebar-heading">
-          Opciones
+          <%= t('application.options') %>
         </div>
 
         <li class="nav-item">
           <% if current_user.present? %>
             <%= link_to products_path, class: "nav-link"  do %>
               <i class="fas fa-fw fa-shopping-basket"></i>
-              <span>Productos</span>
+              <span> <%= t('modules.product.other') %> </span>
             <%end%>
           <%end%>
         </li>
@@ -30,13 +31,13 @@
           <% if current_user.present? %>
             <%= link_to users_path, class: "nav-link"  do %>
               <i class="fas fa-fw fa-user"></i>
-              <span>Usuarios</span>
+              <span><%= t('modules.user.other') %></span>
             <%end%>
           <%end%> 
         </li>
 
       </ul>
-<!-- -->
+      <!--     -->
       <div id="content-wrapper" class="d-flex flex-column">
         <div id="content">
           <!-- Topbar -->
@@ -49,6 +50,7 @@
 
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">
+            <p class="alert"><%= alert %></p>
                 <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                   <form class="form-inline mr-auto w-100 navbar-search">
                     <div class="input-group">

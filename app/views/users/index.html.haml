@@ -5,7 +5,7 @@
 %form.form-inline.mb-4
   .form-group
     = text_field_tag :search, params[:search], class: "form-control", placeholder: t('application.search_users')
-  = submit_tag t('application.search'), class: "btn btn-primary"
+    = submit_tag t('application.search'), class: "btn btn-primary"
   
 %table.table.table-striped
   %thead
@@ -27,9 +27,6 @@
         %td= button_to t('application.delete'), user_path(user), method: :delete, class: "btn btn-danger", data: { confirm: t('application.confirmation.delete') }
     %table.table.table-striped
   %thead
-
-- if @user
-  - redirect_to user_path(@user)
 
 
 

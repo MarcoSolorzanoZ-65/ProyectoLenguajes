@@ -21,6 +21,8 @@ es:
     can_not_be_saved: No se pudo guardar
     search_users: Correo usuario
     search: Buscar
+    options: Opciones
+    restaurant: Restaurante
     
   activerecord:
     attributes:
@@ -123,4 +125,5 @@ es:
   
   errors:
     messages:
-        not_saved: No se ha guardado  
+        not_saved: No se ha guardado 
+        user_not_found: Usuario no econtrado 
