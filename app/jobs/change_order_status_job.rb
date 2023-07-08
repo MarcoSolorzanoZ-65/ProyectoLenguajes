@@ -2,7 +2,9 @@
 class ChangeOrderStatusJob < ApplicationJob
   queue_as :default
 
-  def perform(order_id)
+  MAX_PERFORM_COUNT = 5
+
+  def perform(order_id, perform_count = 1)
     order = Order.find(order_id)
     current_status = order.order_status
 
@@ -13,6 +15,8 @@ class ChangeOrderStatusJob < ApplicationJob
     order.update(order_status: next_status)
 
     # Re-enqueue the job to run again after 5 minutes if the new status is less than 5
-    self.class.set(wait: 5.minutes).perform_later(order_id) if next_status < 5
+    if next_status != 5 && perform_count < MAX_PERFORM_COUNT
+      self.class.set(wait: 5.minutes).perform_later(order_id, perform_count + 1)
+    end
   end
 end
