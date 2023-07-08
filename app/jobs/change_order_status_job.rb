@@ -15,7 +15,7 @@ class ChangeOrderStatusJob < ApplicationJob
     order.update(order_status: next_status)
 
     # Re-enqueue the job to run again after 5 minutes if the new status is less than 5
-    if next_status != 5 && perform_count < MAX_PERFORM_COUNT
+    if next_status <= MAX_PERFORM_COUNT
       self.class.set(wait: 5.minutes).perform_later(order_id, perform_count + 1)
     end
   end
