@@ -3,8 +3,10 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
-   if session[:user_id] 
-      @user = User.find_by(id:session[:user_id])
+    @orders = Order.all
+  
+    if params[:status].present?
+      @orders = @orders.where(order_status: params[:status])
     end
   end
 

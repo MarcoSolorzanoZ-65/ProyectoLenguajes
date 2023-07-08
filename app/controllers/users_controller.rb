@@ -1,6 +1,15 @@
 class UsersController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:update]
   def index
+    if params[:search].present?
+      @user = User.find_by(email: params[:search])
+      if @user
+        redirect_to user_path(@user)
+        return
+      else
+        flash.now[:notice] = t('errors.messages.user_not_found')
+      end
+    end
     @users = User.all
   end
 
@@ -38,11 +47,12 @@ class UsersController < ApplicationController
       end
     end
     @users = User.all
-  end
+    render :index
+  end  
 
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :address, :category_id)
+    params.require(:user).permit(:email, :password, :password_confirmation, :address, :category_id, :status)
   end
 end

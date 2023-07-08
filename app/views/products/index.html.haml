@@ -26,6 +26,34 @@
         %td= link_to t('application.show'), product, class: "btn btn-info"
         %td= link_to t('application.edit'), edit_product_path(product), class: "btn btn-success"
         %td= button_to t('application.delete'), product, method: :delete, class: "btn btn-danger"
+= form_tag products_path, method: :get do
+  = select_tag :status, options_for_select([[t('application.all'), ''], [t('activerecord.attributes.order_status_type.active'), '1'], [t('activerecord.attributes.order_status_type.inactive'), '2'], [t('activerecord.attributes.order_status_type.pending'), '3'], [t('activerecord.attributes.order_status_type.completed'), '4']]), include_blank: t('application.all')
+  = submit_tag t('application.filter')
+
+%h2 Ordenes
+
+- @orders.each do |order|
+  - if order.products.present?
+    .card
+      .card-header
+        %h3= "Orden ##{order.id}"
+      .card-body
+        %p= t('activerecord.attributes.order_status') + ": " + t("activerecord.attributes.order_status_type.#{order.order_status}")
+        %table.table.table-striped
+          %thead
+            %tr
+              %th= t('activerecord.attributes.product.name')
+              %th= t('activerecord.attributes.product.desc')
+              %th= t('activerecord.attributes.product.price')
+          %tbody
+            - order.products.each do |product|
+              %tr
+                %td= product.name
+                %td= product.desc
+                %td= product.price
+
+
+
 
 
 

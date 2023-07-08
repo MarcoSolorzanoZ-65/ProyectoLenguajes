@@ -15,8 +15,8 @@ class Users::SessionsController < Devise::SessionsController
       end
     else
       respond_to do |format|
-        format.html { redirect_to new_user_session_path, alert: 'Invalid email or password' }
-        format.json { render json: { error: 'Invalid email or password' }, status: :unauthorized }
+        format.html { redirect_to new_user_session_path, alert: t('errors.messages.password_email_not_found') }
+        format.json { render json: { error: t('errors.messages.password_email_not_found') }, status: :unauthorized }
       end
     end
   end
