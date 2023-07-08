@@ -24,6 +24,9 @@ es:
     search: Buscar
     options: Opciones
     restaurant: Restaurante
+    all: Todos
+    filter: Filtrar
+    update_status: Actualizar estado
     
   activerecord:
     attributes:
@@ -63,7 +66,30 @@ es:
           false: Inactivo
         menu_id: Menu
         image: Imagen
-        total_sales: Total de ventas     
+        total_sales: Total de ventas 
+      order:
+        name: Nombre
+        desc: Descripción
+        price: Precio
+        status: Estado
+        status_type:
+          active: Activo
+          inactive: Inactivo
+          true: Activo
+          false: Inactivo
+        menu_id: Menu  
+        order_status: Estado de la orden
+        on_time: A tiempo
+        over_time: Sobre tiempo
+        delayed: Demorado
+        canceled: Anulado
+        delivered: Entregado
+        order_status_type:
+          1: A tiempo
+          2: Sobre tiempo
+          3: Demorado
+          4: Anulado
+          5: Entregado
     errors:
       models:
         user:
