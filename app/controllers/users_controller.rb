@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:update]
+
   def index
     if params[:search].present?
       @user = User.find_by(email: params[:search])
@@ -10,12 +11,19 @@ class UsersController < ApplicationController
         flash.now[:notice] = t('errors.messages.user_not_found')
       end
     end
+
     @users = User.all
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @users, each_serializer: UserIndexSerializer }
+    end
   end
+
 
   def show
     @user = User.find(params[:id])
-    # Agrega aquí cualquier lógica adicional o recuperación de datos que necesites para la acción show
+    # Add any additional logic or data retrieval you need for the show action
   end
 
   def edit
@@ -48,7 +56,7 @@ class UsersController < ApplicationController
     end
     @users = User.all
     render :index
-  end  
+  end
 
   private
 
