@@ -10,6 +10,9 @@
       %h5.card-title
         = t('activerecord.attributes.user.address')
       %p.card-text= @user.address
+      %h5.card-title
+        = t('activerecord.attributes.user.status')
+      %p.card-text= t("activerecord.attributes.user.status_type.#{@user.status}")
 
 = link_to t('application.back'), users_path, class: 'btn btn-primary'
 

@@ -4,29 +4,80 @@
 
 %form.form-inline.mb-4
   .form-group
-    = text_field_tag :search, params[:search], class: "form-control", placeholder: t('application.search_users')
-    = submit_tag t('application.search'), class: "btn btn-primary"
-  
-%table.table.table-striped
-  %thead
-    %tr
-      %th= t('activerecord.attributes.user.email')
-      %th= t('activerecord.attributes.user.category')
-      %th= t('activerecord.attributes.user.address')
-      %th
-      %th
-      %th
-  %tbody
-    - @users.each do |user|
+    = form_tag(users_path, method: :get, class: "form-control") do
+      = text_field_tag :search, params[:search], class: "form-control", placeholder: t('application.search_users')
+      = submit_tag t('application.search'), class: "btn btn-primary"
+
+
+
+.div.table-container
+  %h2= t('modules.admin.other')
+  %table.table.table-striped
+    %thead
       %tr
-        %td= user.email
-        %td= user.category.category_name
-        %td= user.address
-        %td= link_to t('application.show'), user_path(user), class: "btn btn-info"
-        %td= link_to t('application.edit'), edit_user_path(user), class: "btn btn-success"
-        %td= button_to t('application.delete'), user_path(user), method: :delete, class: "btn btn-danger", data: { confirm: t('application.confirmation.delete') }
-    %table.table.table-striped
-  %thead
+        %th= t('activerecord.attributes.user.email')
+        %th= t('activerecord.attributes.user.category')
+        %th= t('activerecord.attributes.user.address')
+        %th
+        %th
+        %th
+    %tbody
+      - @users.each do |user|
+        - if user.category_id == 1
+          %tr
+            %td= user.email
+            %td= user.category.category_name
+            %td= user.address
+            %td= link_to t('application.show'), user_path(user), class: "btn btn-info"
+            %td= link_to t('application.edit'), edit_user_path(user), class: "btn btn-success"
+            %td= button_to t('application.delete'), user_path(user), method: :delete, class: "btn btn-danger", data: { confirm: t('application.confirmation.delete') }
+
+.div.table-container
+  %h2= t('modules.chef.other')
+  %table.table.table-striped
+    %thead
+      %tr
+        %th= t('activerecord.attributes.user.email')
+        %th= t('activerecord.attributes.user.category')
+        %th= t('activerecord.attributes.user.address')
+        %th
+        %th
+        %th
+    %tbody   
+      - @users.each do |user|
+        - if user.category_id == 2
+          %tr
+            %td= user.email
+            %td= user.category.category_name
+            %td= user.address
+            %td= link_to t('application.show'), user_path(user), class: "btn btn-info"
+            %td= link_to t('application.edit'), edit_user_path(user), class: "btn btn-success"
+            %td= button_to t('application.delete'), user_path(user), method: :delete, class: "btn btn-danger", data: { confirm: t('application.confirmation.delete') }
+
+.div.table-container
+  %h2= t('modules.client.other')
+  %table.table.table-striped
+    %thead
+      %tr
+        %th= t('activerecord.attributes.user.email')
+        %th= t('activerecord.attributes.user.category')
+        %th= t('activerecord.attributes.user.address')
+        %th= t('activerecord.attributes.user.status')
+        %th
+        %th
+        %th
+    %tbody   
+      - @users.each do |user|
+        - if user.category_id == 3
+          %tr
+            %td= user.email
+            %td= user.category.category_name
+            %td= user.address
+            %td= user.status ? t('activerecord.attributes.user.status_type.enabled') : t('activerecord.attributes.user.status_type.disabled')
+            %td= link_to t('application.show'), user_path(user), class: "btn btn-info"
+            %td= link_to t('application.edit'), edit_user_path(user), class: "btn btn-success"
+            %td= button_to t('application.delete'), user_path(user), method: :delete, class: "btn btn-danger", data: { confirm: t('application.confirmation.delete') }
+
 
 
 
