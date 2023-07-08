@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: [:update]
   def index
     @users = User.all
   end
@@ -45,6 +46,3 @@ class UsersController < ApplicationController
     params.require(:user).permit(:email, :password, :password_confirmation, :address, :category_id)
   end
 end
-
-
-  
