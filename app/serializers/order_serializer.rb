@@ -1,5 +1,5 @@
 class OrderSerializer < ActiveModel::Serializer
-  attributes :id, :order_status
+  attributes :id, :order_status, :order_name
   has_many :products
 
   def products
@@ -18,7 +18,7 @@ class OrderSerializer < ActiveModel::Serializer
   private
 
   def get_quantity(product_id)
-    order_product = object.order_products.find_by(product_id: product_id)
+    order_product = object.order_products.find_by(product_id:)
     order_product.quantity if order_product
   end
 end

@@ -1,6 +1,8 @@
 json.array! @orders do |order|
   json.id order.id
   json.order_status order.order_status
+  json.order_name order.order_name
+
   json.products order.products do |product|
     json.id product.id
     json.name product.name
