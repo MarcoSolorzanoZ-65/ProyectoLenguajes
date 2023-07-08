@@ -7,10 +7,10 @@ Rails.application.routes.draw do
     sign_out: 'logout',
     registration: 'signup'
   },
-             controllers: {
-               registrations: 'users/registrations',
-               sessions: 'users/sessions'
-             }
+  controllers: {
+    registrations: 'users/registrations',
+    sessions: 'users/sessions'
+  }
 
   resources :users
 
@@ -18,7 +18,8 @@ Rails.application.routes.draw do
     resources :menus
     resources :categories
     resources :orders
+    put '/users/:id', to: 'users#update'  # Agrega esta línea para la ruta de actualización del usuario
   end
-  
+
   post '/login', to: 'users/sessions#create'
 end

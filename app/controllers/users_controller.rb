@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: [:update]
   def index
     if params[:search].present?
       @user = User.find_by(email: params[:search])

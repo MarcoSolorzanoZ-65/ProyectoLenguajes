@@ -26,6 +26,21 @@
         %td= link_to t('application.show'), product, class: "btn btn-info"
         %td= link_to t('application.edit'), edit_product_path(product), class: "btn btn-success"
         %td= button_to t('application.delete'), product, method: :delete, class: "btn btn-danger"
+%h2 Ordenes
+
+- @orders.each do |order|
+  .card
+    .card-header
+      %h3= "Orden ##{order.id}"
+    .card-body
+      %p= "Estado: #{order.order_status}"
+      
+      %h4 Productos
+      - order.products.each do |product|
+        %p= product.name
+        %p= product.desc
+        %p= product.price
+
 
 
 
