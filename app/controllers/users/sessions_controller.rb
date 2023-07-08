@@ -1,28 +1,26 @@
 class Users::SessionsController < Devise::SessionsController
   respond_to :json
-  skip_before_action :verify_authenticity_token
-  # GET /resource/sign_in
-  # def new
-  #   super
-  # end
+  skip_before_action :verify_authenticity_token, only: :create
 
-  # POST /resource/sign_in
-  # def create
-  #   super
-  # end
-  
-  # DELETE /resource/sign_out
   def create
-    category = Category.find(3) # Cambia el 1 por el ID de la categoría que desees
-    user = category.users.find_by(email: params[:email])
+    user = User.find_by(email: params[:user][:email])
 
-    if user&.valid_password?(params[:password])
+    if user&.valid_password?(params[:user][:password])
+      sign_in(user)
       token = generate_token(user)
-      render json: { token: token, user: user.as_json(include: :category) }
+
+      respond_to do |format|
+        format.html { redirect_to root_path }
+        format.json { render json: { token: token, user: user.as_json(include: :category) } }
+      end
     else
-      render json: { error: 'Credenciales inválidas' }, status: :unauthorized
+      respond_to do |format|
+        format.html { redirect_to new_user_session_path, alert: 'Invalid email or password' }
+        format.json { render json: { error: 'Invalid email or password' }, status: :unauthorized }
+      end
     end
   end
+
 
   def destroy
     super do
@@ -33,10 +31,9 @@ class Users::SessionsController < Devise::SessionsController
 
   protected
 
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_in_params
-  #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
-  # end
+  def after_sign_in_path_for(resource)
+    root_path
+  end
 
   private
 
@@ -44,7 +41,7 @@ class Users::SessionsController < Devise::SessionsController
     payload = { sub: user.id, exp: 24.hours.from_now.to_i }
     JWT.encode(payload, Rails.application.secrets.secret_key_base)
   end
-  
+
   def respond_to_on_destroy
     if current_user
       render json: {
@@ -58,4 +55,4 @@ class Users::SessionsController < Devise::SessionsController
       }, status: :unauthorized
     end
   end
-end  
+end

@@ -5,12 +5,12 @@ Rails.application.routes.draw do
   devise_for :users, path: '', path_names: {
     sign_in: 'login',
     sign_out: 'logout',
-    registratios: 'signup'
+    registration: 'signup'
   },
-  controllers: {
-    registrations: 'users/registrations',
-    sessions: 'users/sessions'
-  }
+             controllers: {
+               registrations: 'users/registrations',
+               sessions: 'users/sessions'
+             }
 
   resources :users
 
@@ -20,8 +20,5 @@ Rails.application.routes.draw do
     resources :orders
   end
 
-  post '/login', to: 'sessions#create'
+  post '/login', to: 'users/sessions#create'
 end
-
-
-
