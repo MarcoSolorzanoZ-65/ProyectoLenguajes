@@ -19,6 +19,6 @@ Rails.application.routes.draw do
     resources :categories
     resources :orders
   end
-
+  
   post '/login', to: 'users/sessions#create'
 end

@@ -16,8 +16,11 @@
   = f.label :address
   = f.text_field :address, class: 'form-control'
 
-  = link_to t('application.back'), users_path, class: 'btn btn-primary'
-  = f.submit t('application.save'), class: 'btn btn-primary'
+  = f.label :status, t('activerecord.attributes.user.status')
+  = f.collection_select :status, [[true, t('activerecord.attributes.user.status_type.enabled')], [false, t('activerecord.attributes.user.status_type.disabled')]], :first, :last, {}, class: 'form-control'
+
+  = link_to t('application.back'), users_path, class: 'btn btn-secondary'
+  = button_tag t('application.save'), class: 'btn btn-outline-success'
 
 
 

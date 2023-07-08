@@ -1,9 +1,13 @@
-%h1 Listing orders
+.div.m-4
+  .page.header
+    %h1.mb-4= t('application.list_of', model: t('modules.order.other'))
+    .float-end.pb-4
+      = link_to t('application.create'), new_order_path, class: "btn btn-primary" 
 
-%table
+%table.table.table-striped
   %thead
     %tr
-      %th Order status
+      %th= t('activerecord.attributes.order.order_status')
       %th
       %th
       %th
@@ -12,10 +16,11 @@
     - @orders.each do |order|
       %tr
         %td= order.order_status
-        %td= link_to 'Show', order
-        %td= link_to 'Edit', edit_order_path(order)
-        %td= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to t('application.show'), order, class: "btn btn-info"
+        %td= link_to t('application.edit'), edit_order_path(order), class: "btn btn-success"
+        %td= button_to t('application.delete'), order, method: :delete, class: "btn btn-danger", data: { confirm: t('application.confirm_delete') }
 
 %br
 
-= link_to 'New Order', new_order_path
+= link_to t('application.new_order'), new_order_path
+

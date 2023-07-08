@@ -15,6 +15,7 @@ es:
     edited: Actualizado correctamente
     destroyed: Borrado correctamente
     select: Seleccione
+    select_state: Seleccione estado
     error: Error
     created: Creado correctamente
     cruds_available: Temas disponibles
@@ -33,6 +34,12 @@ es:
         user_detail: Detalles del Usuario
         minimum_character: Caracteres minimos
         email: Correo
+        status: Estado
+        status_type:
+          enabled: Habilitado
+          disabled: Deshabilitado
+          true: Habilitado
+          false: Deshabilitado
         password: Contraseña
         password_confirmation: Confirmar contraseña
         category_name: Categoria
@@ -40,7 +47,8 @@ es:
         category: Categoria
         category_type:
           1: Administrador
-          2: Usuario
+          2: Cocinero
+          3: Cliente
         address: Direccion
         remember_me: Recordarme
       product:
@@ -63,6 +71,7 @@ es:
               password_confirmation:
                 confirmation: confirmacion requerida
               email:
+                taken: ya registrado
                 blank: está vacío
               password:
                 too_short: es muy corta
@@ -97,6 +106,26 @@ es:
       edit: Editando producto
       one: Producto
       other: Productos
+    admin:
+      new: Nuevo administador
+      edit: Editando administador
+      one: Administador
+      other: Administadores
+    chef:
+      new: Nuevo cocinero
+      edit: Editando cocinero
+      one: Cocinero
+      other: Cocineros
+    client:
+      new: Nuevo cliente
+      edit: Editando cliente
+      one: Cliente
+      other: Clientes
+    order:
+      new: Nueva orden
+      edit: Editando orden
+      one: Orden
+      other: Ordenes
   
   devise:
     sign_up: Registrarse
@@ -127,3 +156,4 @@ es:
     messages:
         not_saved: No se ha guardado 
         user_not_found: Usuario no econtrado 
+        password_email_not_found: Contraseña o correo incorrectos
