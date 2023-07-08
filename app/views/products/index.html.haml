@@ -26,19 +26,19 @@
         %td= link_to t('application.show'), product, class: "btn btn-info"
         %td= link_to t('application.edit'), edit_product_path(product), class: "btn btn-success"
         %td= button_to t('application.delete'), product, method: :delete, class: "btn btn-danger"
-= form_tag products_path, method: :get do
-  = select_tag :status, options_for_select([[t('application.all'), ''], [t('activerecord.attributes.order_status_type.active'), '1'], [t('activerecord.attributes.order_status_type.inactive'), '2'], [t('activerecord.attributes.order_status_type.pending'), '3'], [t('activerecord.attributes.order_status_type.completed'), '4']]), include_blank: t('application.all')
-  = submit_tag t('application.filter')
 
-%h2 Ordenes
+%h2= t('modules.order.other')
+= form_tag products_path, method: :get do
+  = select_tag :status, options_for_select([[t('activerecord.attributes.order.on_time'), '1'], [t('activerecord.attributes.order.over_time'), '2'], [t('activerecord.attributes.order.delayed'), '3'], [t('activerecord.attributes.order.canceled'), '4'], [t('activerecord.attributes.order.delivered'), '5']]), include_blank: t('application.all')
+  = submit_tag t('application.filter')
 
 - @orders.each do |order|
   - if order.products.present?
     .card
       .card-header
-        %h3= "Orden ##{order.id}"
+        %h3= t("modules.order.one" ) + "##{order.id}"
       .card-body
-        %p= t('activerecord.attributes.order_status') + ": " + t("activerecord.attributes.order_status_type.#{order.order_status}")
+        %p= t('activerecord.attributes.order_status') + ": " + t("activerecord.attributes.order.order_status_type.#{order.order_status}")
         %table.table.table-striped
           %thead
             %tr
