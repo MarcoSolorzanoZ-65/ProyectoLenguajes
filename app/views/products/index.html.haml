@@ -32,13 +32,28 @@
   = select_tag :status, options_for_select([[t('activerecord.attributes.order.on_time'), '1'], [t('activerecord.attributes.order.over_time'), '2'], [t('activerecord.attributes.order.delayed'), '3'], [t('activerecord.attributes.order.canceled'), '4'], [t('activerecord.attributes.order.delivered'), '5']]), include_blank: t('application.all')
   = submit_tag t('application.filter')
 
+= form_tag products_path, method: :get do
+  = label_tag :start_date, t('activerecord.attributes.order.start_date')
+  = text_field_tag :start_date, params[:start_date], placeholder: 'YYYY-MM-DD'
+  = label_tag :end_date, t('activerecord.attributes.order.end_date')
+  = text_field_tag :end_date, params[:end_date], placeholder: 'YYYY-MM-DD'
+  = submit_tag t('application.filter')
+
+= form_tag products_path, method: :get do
+  = label_tag :order_name, t('application.search_users')
+  = text_field_tag :order_name, params[:order_name]
+  = submit_tag t('application.search')
+
 - @orders.each do |order|
   - if order.products.present?
     .card
       .card-header
-        %h3= t("modules.order.one" ) + "##{order.id}"
+        %h3= order.order_name
       .card-body
-        %p= t('activerecord.attributes.order_status') + ": " + t("activerecord.attributes.order.order_status_type.#{order.order_status}")
+        %p= t('activerecord.attributes.order.order_status') + ": " + t("activerecord.attributes.order.order_status_type.#{order.order_status}")
+        = form_for order, url: order_path(order), method: :patch do |f|
+          = f.select :order_status, options_for_select([[t('activerecord.attributes.order.on_time'), '1'], [t('activerecord.attributes.order.over_time'), '2'], [t('activerecord.attributes.order.delayed'), '3'], [t('activerecord.attributes.order.canceled'), '4'], [t('activerecord.attributes.order.delivered'), '5']], selected: order.order_status)
+          = f.submit "Guardar"
         %table.table.table-striped
           %thead
             %tr
@@ -51,6 +66,13 @@
                 %td= product.name
                 %td= product.desc
                 %td= product.price
+                
+
+
+
+
+
+
 
 
 

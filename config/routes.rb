@@ -15,11 +15,15 @@ Rails.application.routes.draw do
   resources :users
 
   scope module: :api do
+    patch 'orders/:id/update_status', to: 'orders#update_status'
+  end
+
+  scope module: :api do
     resources :menus
     resources :categories
     resources :orders
     put '/users/:id', to: 'users#update'  # Agrega esta línea para la ruta de actualización del usuario
   end
-
+  
   post '/login', to: 'users/sessions#create'
 end

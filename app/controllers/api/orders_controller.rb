@@ -16,11 +16,13 @@ module Api
       @order = Order.new
     end
 
-    def edit; end
+    def edit
+      @order = Order.find(params[:id])
+    end    
 
     def create
       @order = Order.new(order_params)
-      @order.order_name = params[:order][:order_name] # Assign the order_name from the request
+      @order.order_name = params[:order][:order_name]
 
       if @order.save
         ChangeOrderStatusJob.perform_later(@order.id)
@@ -32,11 +34,15 @@ module Api
 
     def update
       if @order.update(order_params)
-        render json: @order, status: :ok
+        if params[:order] && params[:order][:order_status].present?
+          @order.update(order_status: params[:order][:order_status])
+        end
+        redirect_to products_path(@product)
       else
-        render json: @order.errors, status: :unprocessable_entity
+        render :edit
       end
     end
+      
 
     def destroy
       @order.products.destroy_all

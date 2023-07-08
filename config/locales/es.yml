@@ -20,7 +20,7 @@ es:
     created: Creado correctamente
     cruds_available: Temas disponibles
     can_not_be_saved: No se pudo guardar
-    search_users: Correo usuario
+    search_users: Usuario
     search: Buscar
     options: Opciones
     restaurant: Restaurante
@@ -90,6 +90,8 @@ es:
           3: Demorado
           4: Anulado
           5: Entregado
+        start_date: Fecha inicial
+        end_date: Fecha final
     errors:
       models:
         user:
