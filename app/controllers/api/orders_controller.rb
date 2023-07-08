@@ -21,8 +21,9 @@ module Api
 
     def create
       @order = Order.new(order_params)
-
       if @order.save
+        # Enqueue the background job to change the order status every 5 minutes
+        ChangeOrderStatusJob.perform_later(@order.id)
         render json: @order, status: :created
       else
         render json: @order.errors, status: :unprocessable_entity
